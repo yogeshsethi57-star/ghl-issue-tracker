@@ -22,6 +22,7 @@
 .btn-icon:hover { background: #f1f5f9; }
 .issue-contact { font-size: .8rem; color: #64748b; margin-top: .35rem; }
 .issue-desc { font-size: .85rem; color: #475569; margin-top: .5rem; line-height: 1.5; }
+.issue-resolution { font-size: .85rem; color: #7c3aed; margin-top: .5rem; line-height: 1.5; background: #f5f3ff; border-left: 3px solid #7c3aed; padding: .4rem .75rem; border-radius: 0 6px 6px 0; }
 .issue-meta { display: flex; align-items: center; gap: .75rem; margin-top: .75rem; flex-wrap: wrap; }
 .badge { color: white; font-size: .7rem; font-weight: 600; padding: .2rem .6rem; border-radius: 20px; }
 .status-select { border: 1.5px solid; border-radius: 6px; padding: .2rem .5rem; font-size: .8rem; font-weight: 600; background: white; cursor: pointer; }

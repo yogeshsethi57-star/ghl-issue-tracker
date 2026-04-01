@@ -12,7 +12,7 @@ export default function App() {
   const [issues, setIssues] = useState([])
   const [loading, setLoading] = useState(true)
   const [showForm, setShowForm] = useState(false)
-  const [form, setForm] = useState({ title: '', description: '', status: 'Open', priority: 'Medium', contact: '' })
+  const [form, setForm] = useState({ title: '', description: '', status: 'Open', priority: 'Medium', contact: '', resolution: '' })
   const [filter, setFilter] = useState('All')
   const [editId, setEditId] = useState(null)
 
@@ -40,7 +40,7 @@ export default function App() {
   }
 
   const handleEdit = (issue) => {
-    setForm({ title: issue.title, description: issue.description, status: issue.status, priority: issue.priority, contact: issue.contact || '' })
+    setForm({ title: issue.title, description: issue.description, status: issue.status, priority: issue.priority, contact: issue.contact || '', resolution: issue.resolution || '' })
     setEditId(issue.id)
     setShowForm(true)
   }
@@ -99,6 +99,12 @@ export default function App() {
                 <input value={form.contact} onChange={e => setForm({ ...form, contact: e.target.value })} placeholder="e.g. John Smith / Agency XYZ" />
                 <label>Description</label>
                 <textarea rows={4} value={form.description} onChange={e => setForm({ ...form, description: e.target.value })} placeholder="Steps to reproduce, expected vs actual..." />
+                {editId && (
+                  <>
+                    <label>Developer Notes / Resolution</label>
+                    <textarea rows={3} value={form.resolution} onChange={e => setForm({ ...form, resolution: e.target.value })} placeholder="What was done to fix this issue..." />
+                  </>
+                )}
                 <div className="row">
                   <div>
                     <label>Priority</label>
@@ -140,6 +146,7 @@ export default function App() {
                 </div>
                 {issue.contact && <div className="issue-contact">👤 {issue.contact}</div>}
                 {issue.description && <div className="issue-desc">{issue.description}</div>}
+                {issue.resolution && <div className="issue-resolution">🔧 <strong>Dev Notes:</strong> {issue.resolution}</div>}
                 <div className="issue-meta">
                   <span className="badge" style={{ background: priorityColor[issue.priority] }}>{issue.priority}</span>
                   <select
